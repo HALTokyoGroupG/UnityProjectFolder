@@ -10,7 +10,7 @@ public class OnClick : MonoBehaviour {
     //==============================
     public void LoadScene(int level)
     {
-        SoundManager.instance.PlaySingle(sfx);
+       // SoundManager.instance.PlaySingle(sfx);
         SysUpdate.instance.FadeLoad(level);
     }
 
