@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\scripts\LetterBulge.cs" />
+     <Compile Include="Assets\scripts\gameScripts\Billboard.cs" />
      <Compile Include="Assets\scripts\gameScripts\GameManager.cs" />
+     <Compile Include="Assets\scripts\gameScripts\LocalMove.cs" />
      <Compile Include="Assets\scripts\systemScripts\CameraAspect.cs" />
      <Compile Include="Assets\scripts\systemScripts\DataStore.cs" />
      <Compile Include="Assets\scripts\systemScripts\InitScript.cs" />
