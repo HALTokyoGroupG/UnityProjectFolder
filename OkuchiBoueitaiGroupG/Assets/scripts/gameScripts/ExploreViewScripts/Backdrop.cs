@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Billboard : MonoBehaviour {
+public class Backdrop : MonoBehaviour {
 
-    private Camera m_Camera;
+    public int nLimitRight = 5;
+    public int nLimitLeft = -5;
 
     //==============================
     // ゲームの初期化処理
     //==============================
     void Start()
     {
-        m_Camera = GameManager.instance.mainCamera;
 
     }
 
@@ -19,9 +19,12 @@ public class Billboard : MonoBehaviour {
     //==============================
     void Update()
     {
+        Vector3 pos = transform.position;
 
-        transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward,
-            m_Camera.transform.rotation * Vector3.up);
+        pos.x += GameManager.instance.GetComponent<LocalMove>().GetMovement();
 
+        pos.x = Mathf.Clamp(pos.x, -nLimitRight, -nLimitLeft);
+
+        transform.position = pos;
     }
 }

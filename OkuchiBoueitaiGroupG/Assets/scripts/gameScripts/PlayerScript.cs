@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LocalMove : MonoBehaviour {
+public class PlayerScript : MonoBehaviour {
 
     //==============================
     // ゲームの初期化処理
@@ -9,16 +9,13 @@ public class LocalMove : MonoBehaviour {
     void Start()
     {
 
-
     }
 
     //==============================
-    // ゲームの更新化処理
+    // ゲームの更新処理
     //==============================
     void Update()
     {
-
-
 
     }
 }
