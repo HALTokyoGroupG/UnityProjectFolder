@@ -7,6 +7,9 @@ public class LocalMove : MonoBehaviour {
 
     private float fMovement = 0.0f;
 
+    private bool bMovingR = false;
+    private bool bMovingL = false;
+
     private bool bLimitR = false;
     private bool bLimitL = false;
 
@@ -15,7 +18,11 @@ public class LocalMove : MonoBehaviour {
     //==============================
     public void MoveRight()
     {
-        fMovement = -fSpeed;
+        if(!bMovingL)
+        {
+            fMovement = -fSpeed;
+            bMovingR = true;
+        }
     }
 
     //==============================
@@ -23,7 +30,11 @@ public class LocalMove : MonoBehaviour {
     //==============================
     public void MoveLeft()
     {
-        fMovement = fSpeed;
+        if (!bMovingR)
+        {
+            fMovement = fSpeed;
+            bMovingL = true;
+        }
     }
 
     //==============================
@@ -65,6 +76,8 @@ public class LocalMove : MonoBehaviour {
     public void CancelMove()
     {
         fMovement = 0.0f;
+        bMovingR = false;
+        bMovingL = false;
     }
 
 }
