@@ -49,6 +49,12 @@ public class TextController : MonoBehaviour
 		get { return Time.time > TimeElapsed + TimeUntilDisplay; }
 	}
 
+	//文字表示速度変更
+	public float TextSpeed
+	{
+		set { IntervalForCharacterDisplay = value * 0.01f; }
+	}
+
 	void Start()
 	{
 		SetNextLine();
@@ -59,9 +65,21 @@ public class TextController : MonoBehaviour
 		// 文字の表示が完了してるならクリック時に次の行を表示する
 		if (IsCompleteDisplayText)
 		{
-			if((int)Mathf.Clamp01((Time.time - FlashTime)) < Time.deltaTime * 0.5f)
+			//クリックされてから一定時間立ったら
+			if ((int)Mathf.Clamp01((Time.time - FlashTime)) > Time.deltaTime * 0.5f)
 			{
 				FlashTime = Time.time;
+
+				NextFlag = !NextFlag;
+
+				if (NextFlag)
+				{
+					UiText.text = Scenarios[CurrentLine];
+				}
+				else
+				{
+					UiText.text = Scenarios[CurrentLine] + "▼";
+				}
 			}
 
 			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0))
