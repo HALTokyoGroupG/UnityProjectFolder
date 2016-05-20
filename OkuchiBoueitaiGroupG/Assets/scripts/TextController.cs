@@ -43,6 +43,8 @@ public class TextController : MonoBehaviour
 	//クリックしてねって言う三角の点滅用時間
 	private float FlashTime = 0;
 
+	public Button Menu;
+
 	// 文字の表示が完了しているかどうか
 	public bool IsCompleteDisplayText
 	{
@@ -62,6 +64,8 @@ public class TextController : MonoBehaviour
 
 	void Update()
 	{
+		//Vector3 ScreenToWorldPositionMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
 		// 文字の表示が完了してるならクリック時に次の行を表示する
 		if (IsCompleteDisplayText)
 		{
@@ -82,15 +86,23 @@ public class TextController : MonoBehaviour
 				}
 			}
 
-			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0))
-			{
+			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0)
+				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
+				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
+				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
+				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
+            {
 				SetNextLine();
 			}
 		}
 		else
 		{
 			// 完了してないなら文字をすべて表示する
-			if (Input.GetMouseButtonUp(0))
+			if (Input.GetMouseButtonUp(0)
+				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
+				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
+				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
+				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
 			{
 				TimeUntilDisplay = 0;
 			}
