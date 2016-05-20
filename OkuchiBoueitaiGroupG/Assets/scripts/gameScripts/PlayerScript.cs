@@ -16,6 +16,20 @@ public class PlayerScript : MonoBehaviour {
     //==============================
     void Update()
     {
+        Vector3 pos = transform.position;
 
+        if (GameManager.instance.GetComponent<LocalMove>().LimitHit())
+        {
+            pos.x -= GameManager.instance.GetComponent<LocalMove>().GetMovement();
+        }
+
+
+        if (Mathf.Abs(pos.x) < 0.05f)
+        {
+            pos.x = 0.0f;
+            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(false);
+        }
+
+        transform.position = pos;
     }
 }

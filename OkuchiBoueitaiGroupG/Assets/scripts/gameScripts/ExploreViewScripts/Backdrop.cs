@@ -21,20 +21,21 @@ public class Backdrop : MonoBehaviour {
     {
         Vector3 pos = transform.position;
 
-        pos.x += GameManager.instance.GetComponent<LocalMove>().GetMovement();
-
-        if (pos.x > nLimitRight)
+        if (!GameManager.instance.GetComponent<LocalMove>().LimitHit())
         {
-            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(true, false);
-            pos.x = nLimitRight;
-        }
-        if (pos.x < nLimitLeft)
-        {
-            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(false, true);
-            pos.x = nLimitLeft;
+            pos.x += GameManager.instance.GetComponent<LocalMove>().GetMovement();
         }
 
-        //pos.x = Mathf.Clamp(pos.x, -nLimitRight, -nLimitLeft);
+        if (-pos.x > nLimitRight)
+        {
+            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(true);
+            pos.x = -nLimitRight;
+        }
+        if (-pos.x < nLimitLeft)
+        {
+            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag( true);
+            pos.x = -nLimitLeft;
+        }
 
         transform.position = pos;
     }

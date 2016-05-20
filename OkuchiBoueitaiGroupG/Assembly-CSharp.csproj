@@ -48,10 +48,12 @@
      <Compile Include="Assets\scripts\LetterBulge.cs" />
      <Compile Include="Assets\scripts\gameScripts\Billboard.cs" />
      <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\Backdrop.cs" />
+     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\ExplorationView.cs" />
      <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\LocalMove.cs" />
      <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\MoveLScript.cs" />
      <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\MoveRButton.cs" />
      <Compile Include="Assets\scripts\gameScripts\GameManager.cs" />
+     <Compile Include="Assets\scripts\gameScripts\ModeChange.cs" />
      <Compile Include="Assets\scripts\gameScripts\PlayerScript.cs" />
      <Compile Include="Assets\scripts\systemScripts\CameraAspect.cs" />
      <Compile Include="Assets\scripts\systemScripts\DataStore.cs" />

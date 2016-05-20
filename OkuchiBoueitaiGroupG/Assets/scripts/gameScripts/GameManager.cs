@@ -5,16 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject click;
-
     //public GameObject PauseMenu;
     //public GameObject PauseButton;
     private bool bPause = false;
-
-    struct Clicks
-    {
-        public GameObject obj;
-    }
 
     public Camera mainCamera;
     public AudioClip[] BGMs;
@@ -58,9 +51,6 @@ public class GameManager : MonoBehaviour {
         {
             return;
         }
-
-        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0.0f;
 
 
     }

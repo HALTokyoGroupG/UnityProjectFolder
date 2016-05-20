@@ -19,3 +19,4 @@ C:\Users\Watanabe Atori\Desktop\CaseStudy\UnityProjectFolder\OkuchiBoueitaiGroup
 C:\Users\Watanabe Atori\Desktop\CaseStudy\UnityProjectFolder\OkuchiBoueitaiGroupG\Temp\bin\Debug\UnityEngine.Networking.xml
 C:\Users\Watanabe Atori\Desktop\CaseStudy\UnityProjectFolder\OkuchiBoueitaiGroupG\obj\Debug\Assembly-CSharp.dll
 C:\Users\Watanabe Atori\Desktop\CaseStudy\UnityProjectFolder\OkuchiBoueitaiGroupG\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Watanabe Atori\Desktop\CaseStudy\UnityProjectFolder\OkuchiBoueitaiGroupG\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache

@@ -10,8 +10,7 @@ public class LocalMove : MonoBehaviour {
     private bool bMovingR = false;
     private bool bMovingL = false;
 
-    private bool bLimitR = false;
-    private bool bLimitL = false;
+    private bool bLimit = false;
 
     //==============================
     // 右移動処理
@@ -40,26 +39,18 @@ public class LocalMove : MonoBehaviour {
     //==============================
     // 右限界判定処理
     //==============================
-    public bool LimitRHit()
+    public bool LimitHit()
     {
-        return bLimitR;
+        return bLimit;
     }
 
-    //==============================
-    // 左限界判定処理
-    //==============================
-    public bool LimitLHit()
-    {
-        return bLimitL;
-    }
 
     //==============================
     // 移動限界設定処理
     //==============================
-    public void SetLimitFlag(bool R, bool L)
+    public void SetLimitFlag(bool L)
     {
-        bLimitR = R;
-        bLimitL = L;
+        bLimit = L;
     }
 
     //==============================
