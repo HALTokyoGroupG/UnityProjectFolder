@@ -23,7 +23,18 @@ public class Backdrop : MonoBehaviour {
 
         pos.x += GameManager.instance.GetComponent<LocalMove>().GetMovement();
 
-        pos.x = Mathf.Clamp(pos.x, -nLimitRight, -nLimitLeft);
+        if (pos.x > nLimitRight)
+        {
+            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(true, false);
+            pos.x = nLimitRight;
+        }
+        if (pos.x < nLimitLeft)
+        {
+            GameManager.instance.GetComponent<LocalMove>().SetLimitFlag(false, true);
+            pos.x = nLimitLeft;
+        }
+
+        //pos.x = Mathf.Clamp(pos.x, -nLimitRight, -nLimitLeft);
 
         transform.position = pos;
     }

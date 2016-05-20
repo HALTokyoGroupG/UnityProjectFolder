@@ -43,6 +43,15 @@ public class LocalMove : MonoBehaviour {
     }
 
     //==============================
+    // 移動限界設定処理
+    //==============================
+    public void SetLimitFlag(bool R, bool L)
+    {
+        bLimitR = R;
+        bLimitL = L;
+    }
+
+    //==============================
     // 移動処理
     //==============================
     public float GetMovement()
