@@ -51,12 +51,36 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+>>>>>>> 9200fc181b6c9bfaa1e26e722da3e96a650519df
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+>>>>>>> 9200fc181b6c9bfaa1e26e722da3e96a650519df
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -68,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\NPC.cs" />
     <Compile Include="Assets\scripts\gameScripts\Billboard.cs" />
     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\Backdrop.cs" />
@@ -76,6 +101,16 @@
     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\MoveRButton.cs" />
     <Compile Include="Assets\scripts\gameScripts\GameManager.cs" />
     <Compile Include="Assets\scripts\gameScripts\PlayerScript.cs" />
+=======
+    <Compile Include="Assets\scripts\LetterBulge.cs" />
+    <Compile Include="Assets\scripts\gameScripts\GameManager.cs" />
+    <Compile Include="Assets\scripts\systemScripts\CameraAspect.cs" />
+    <Compile Include="Assets\scripts\systemScripts\DataStore.cs" />
+    <Compile Include="Assets\scripts\systemScripts\InitScript.cs" />
+    <Compile Include="Assets\scripts\systemScripts\OnClick.cs" />
+    <Compile Include="Assets\scripts\systemScripts\SoundManager.cs" />
+    <Compile Include="Assets\scripts\systemScripts\SysUpdate.cs" />
+>>>>>>> 9200fc181b6c9bfaa1e26e722da3e96a650519df
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
