@@ -23,6 +23,14 @@ public class ModeChange : MonoBehaviour {
 
     }
 
+    //==============================
+    // ゲームの更新処理
+    //==============================
+    public void ChangeTo(int nNo)
+    {
+
+    }
+
     ////==============================
     //// backdrop登録処理
     ////==============================
@@ -30,4 +38,6 @@ public class ModeChange : MonoBehaviour {
     //{
     //    Backdrop = backdrop;
     //}
+
+
 }
