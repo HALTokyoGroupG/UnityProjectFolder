@@ -35,12 +35,19 @@ public class SysUpdate : MonoBehaviour {
 
     }
 
-    public void FadeLoad(int scene)
+    //==============================
+    // フェード付きロード処理
+    //==============================
+    public void FadeLoad(int scene, float fadeRate = 0.1f)
     {
+        FadeRate = fadeRate;
         bFadeOut = true;
         nLoadNo = scene;
     }
 
+    //==============================
+    // フェード更新処理
+    //==============================
     void Update()
     {
         if( bFadeOut )
@@ -69,5 +76,12 @@ public class SysUpdate : MonoBehaviour {
         Fader.color = col;
     }
 
-
+    //==============================
+    // フェードアウト呼ぶ処理
+    //==============================
+    public void Fadeout( float fadeRate = 0.1f)
+    {
+        FadeRate = fadeRate;
+        bFadeOut = true;
+    }
 }
