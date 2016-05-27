@@ -25,15 +25,15 @@ public class NPC : MonoBehaviour {
         //    }
         //}
 
-        Vector3 mousePos = GameManager.instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+//        Vector3 mousePos = GameManager.instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
 
-        if (Physics.Raycast(mousePos, new Vector3(0,0,1), 1000))
-        {
-            if(hit.collider.tag=="NPC")
-            {
-                Debug.Log("hit");
-            }
-        }
+        //if (Physics.Raycast(mousePos, new Vector3(0,0,1), 100000))
+        //{
+        //    if(hit.collider.tag == "NPC")
+        //    {
+        //        Debug.Log("hit");
+        //    }
+        //}
     }
 }
