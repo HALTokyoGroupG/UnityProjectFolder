@@ -10,16 +10,16 @@ public class OnClick : MonoBehaviour {
     //==============================
     public void LoadScene(int level)
     {
-        SoundManager.instance.PlaySingle(sfx);
+        //SoundManager.instance.PlaySingle(sfx);
         SysUpdate.instance.FadeLoad(level);
     }
 
     //==============================
     // クリックでシーン読み込み処理
     //==============================
-    public void LoadStage(int stage)
-    {
-        DataStore.instance.SetStage(stage);
-        SysUpdate.instance.FadeLoad(1);
-    }
+    //public void LoadStage(int stage)
+    //{
+    //    DataStore.instance.SetStage(stage);
+    //    SysUpdate.instance.FadeLoad(1);
+    //}
 }

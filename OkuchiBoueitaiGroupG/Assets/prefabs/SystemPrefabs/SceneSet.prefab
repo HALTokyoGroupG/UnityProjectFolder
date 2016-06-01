@@ -408,12 +408,12 @@ Canvas:
   serializedVersion: 2
   m_RenderMode: 1
   m_Camera: {fileID: 2087168}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 1700737861
+  m_SortingLayerID: 60733407
   m_SortingOrder: 0
 --- !u!224 &22425258
 RectTransform:
@@ -465,6 +465,10 @@ Prefab:
       propertyPath: sfx
       value: 
       objectReference: {fileID: 8300000, guid: 3e28dee7abab430498e8ce055d27d3c0, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 60733407
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 163046}

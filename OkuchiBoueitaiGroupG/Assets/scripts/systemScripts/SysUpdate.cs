@@ -46,6 +46,24 @@ public class SysUpdate : MonoBehaviour {
     }
 
     //==============================
+    // フェード付きロード処理
+    //==============================
+    public void FadeLoadIn()
+    {
+        col.a = 1.0f;
+        bFadeIn = true;
+    }
+
+    //==============================
+    // フェード付きロード処理
+    //==============================
+    public int GetNextLevel()
+    {
+        col.a = 0.0f;
+        return nLoadNo;
+    }
+
+    //==============================
     // フェード更新処理
     //==============================
     void Update()
@@ -57,8 +75,10 @@ public class SysUpdate : MonoBehaviour {
             if( col.a > 1f )
             {
                 bFadeOut = false;
-                Application.LoadLevel(nLoadNo);
-                bFadeIn = true;
+                //Application.LoadLevel(nLoadNo);
+                //LoadSceneのシーン番号を呼ぶように
+                Application.LoadLevel(1);
+                //bFadeIn = true;
             }
         }
 
@@ -76,12 +96,5 @@ public class SysUpdate : MonoBehaviour {
         Fader.color = col;
     }
 
-    //==============================
-    // フェードアウト呼ぶ処理
-    //==============================
-    public void Fadeout( float fadeRate = 0.1f)
-    {
-        FadeRate = fadeRate;
-        bFadeOut = true;
-    }
+
 }
