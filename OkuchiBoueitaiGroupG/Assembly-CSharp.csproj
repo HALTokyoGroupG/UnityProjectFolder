@@ -45,37 +45,44 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\scripts\LetterBulge.cs" />
-     <Compile Include="Assets\scripts\gameScripts\Billboard.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ConversationView\TextController.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\Action.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\Backdrop.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\ExplorationView.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\HitObject.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\LocalMove.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\MoveLScript.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\MoveRButton.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ExploreViewScripts\PlayerScript.cs" />
-     <Compile Include="Assets\scripts\gameScripts\GameManager.cs" />
-     <Compile Include="Assets\scripts\gameScripts\ModeChange.cs" />
-     <Compile Include="Assets\scripts\systemScripts\CameraAspect.cs" />
-     <Compile Include="Assets\scripts\systemScripts\DataStore.cs" />
-     <Compile Include="Assets\scripts\systemScripts\InitScript.cs" />
-     <Compile Include="Assets\scripts\systemScripts\OnClick.cs" />
-     <Compile Include="Assets\scripts\systemScripts\SceneLoaderScrpt.cs" />
-     <Compile Include="Assets\scripts\systemScripts\SoundManager.cs" />
-     <Compile Include="Assets\scripts\systemScripts\SysUpdate.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity523/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
+     <Compile Include="Assets\Scripts\Character\Character2D.cs" />
+     <Compile Include="Assets\Scripts\Character\Character3D.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterDatabase.cs" />
+     <Compile Include="Assets\Scripts\Ezjson.cs" />
+     <Compile Include="Assets\Scripts\GameControllerSample.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\Billboard.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ConversationView\TextController.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\Action.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\Backdrop.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\ExplorationView.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\HitObject.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\LocalMove.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\MoveLScript.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\MoveRButton.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ModeChange.cs" />
+     <Compile Include="Assets\Scripts\LetterBulge.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\CameraAspect.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\DataStore.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\InitScript.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\OnClick.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\SceneLoaderScrpt.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\SystemScripts\SysUpdate.cs" />
+     <Compile Include="Assets\Scripts\UI\CloseButton.cs" />
+     <Compile Include="Assets\Scripts\UI\Memo.cs" />
+     <Compile Include="Assets\Scripts\UI\MenuButton.cs" />
+     <Compile Include="Assets\Scripts\UI\UI.cs" />
+     <Compile Include="Assets\Scripts\UI\UIContent.cs" />
+     <Compile Include="Assets\Scripts\UI\UIFrame.cs" />
+     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+     <Compile Include="Assets\Scripts\UI\UIRoot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity523/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity523/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity523/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity523/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

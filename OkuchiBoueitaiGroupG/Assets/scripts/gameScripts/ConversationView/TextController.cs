@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class TextController : MonoBehaviour
 {
 	//シナリオ		これをファイルから読み込めるようにする
+	[HideInInspector]
 	public string[] Scenarios;
 
 	//テキストボックスのポインタ
@@ -62,6 +63,15 @@ public class TextController : MonoBehaviour
 		SetNextLine();
 	}
 
+	void OnEnable()
+	{
+
+	}
+	void OnDisable()
+	{
+
+	}
+
 	void Update()
 	{
 		// 文字の表示が完了してるならクリック時に次の行を表示する
@@ -76,11 +86,11 @@ public class TextController : MonoBehaviour
 
 				if (NextFlag)
 				{
-					UiText.text = Scenarios[CurrentLine];
+					UiText.text = Scenarios[CurrentLine-1];
 				}
 				else
 				{
-					UiText.text = Scenarios[CurrentLine] + "▼";
+					UiText.text = Scenarios[CurrentLine-1] + "▼";
 				}
 			}
 
@@ -89,7 +99,7 @@ public class TextController : MonoBehaviour
 				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
 				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
 				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
-            {
+			{
 				SetNextLine();
 			}
 		}
@@ -120,7 +130,6 @@ public class TextController : MonoBehaviour
 		}
 	}
 
-
 	void SetNextLine()
 	{
 		CurrentText = Scenarios[CurrentLine];
@@ -133,4 +142,12 @@ public class TextController : MonoBehaviour
 		//文字カウントを初期化
 		LastUpdateCharacter = -1;
 	}
+
+	//temporary use
+	public void SetString(params string[] str)
+	{
+		Scenarios = str;
+	}
+
+
 }

@@ -1,0 +1,9 @@
+#	Ezjson
+#	ほとんど json と一緒 コメント機能のみ追加
+#	object のみ記述可能
+#	配列機能未実装
+#	オブジェクトの複数行にわたる記述は不可能
+#	
+
+{ "name":"もぶ", "parameters":"mob_Param.ezjsion", "image3D":"sample00.jpg", "image2D":"もぶ" }
+{ "name":"妊婦2","parameters":"mob_Param.ezjsion", "image3D":"sample01.jpg", "image2D":"妊婦2" }
