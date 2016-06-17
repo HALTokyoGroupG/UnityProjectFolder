@@ -43,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Building
+    uniqueID: 510507963
+    locked: 0
+  - name: Characters
+    uniqueID: 3014443447
+    locked: 0
   - name: UI
     uniqueID: 60733407
     locked: 0

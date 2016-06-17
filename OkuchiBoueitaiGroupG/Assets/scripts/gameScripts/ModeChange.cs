@@ -1,25 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class ModeChange : MonoBehaviour
 {
 
-	enum VIEWMODE
+	public enum VIEWMODE
 	{
 		UNKNOWN = 0,
 		EXPLORE,
 		CONVERSE,
 		MENU,
+		INVESTIGATE,
+		BACK,
 		MAX
 	};
 
 	public GameObject MenuView;
 	public GameObject ExploreUI;
 	public GameObject ExplorationView;
+	public GameObject InvestigateUI;
+	public GameObject InvestigateView;
 	public GameObject ConversationView;
 
-	private int nCurMode = (int)VIEWMODE.UNKNOWN;
-	private int nNextMode = (int)VIEWMODE.UNKNOWN;
+	private int nCurMode = (int)VIEWMODE.EXPLORE;
+	private int nNextMode = (int)VIEWMODE.EXPLORE;
+	private int nLastMode = (int)VIEWMODE.EXPLORE;
 
 	public float FadeRate = 0.1f;
 	public SpriteRenderer Fader;
@@ -32,7 +38,7 @@ public class ModeChange : MonoBehaviour
 	//==============================
 	void Awake()
 	{
-
+		
 	}
 
 	//==============================
@@ -76,37 +82,72 @@ public class ModeChange : MonoBehaviour
 	//==============================
 	void ChangeMode()
 	{
+		Debug.Log("Next:" + nNextMode);
+		Debug.Log("Cur:" + nCurMode);
+		Debug.Log("Last:" + nLastMode);
 		switch (nNextMode)
 		{
+			case (int)VIEWMODE.BACK:
+				nNextMode = nLastMode;
+				//nLastMode = nCurMode;
+				ChangeMode();
+				break;
+
 			case (int)VIEWMODE.MENU:
+				DeactivateAll();
 
 				MenuView.SetActive(true);
-
-				ExploreUI.SetActive(false);
-				ExplorationView.GetComponent<ExplorationView>().ShowProps(false);
-				ConversationView.SetActive(false);
+				nLastMode = nCurMode;
+				nCurMode = nNextMode;
 				break;
 
 			case (int)VIEWMODE.EXPLORE:
+				DeactivateAll();
 
 				ExploreUI.SetActive(true);
 				ExplorationView.GetComponent<ExplorationView>().ActivateAll(true);
+				nLastMode = nCurMode;
+				nCurMode = nNextMode;
+				break;
 
-				MenuView.SetActive(false);
-				ConversationView.SetActive(false);
+			case (int)VIEWMODE.INVESTIGATE:
+				DeactivateAll();
+
+				InvestigateView.SetActive(true);
+				InvestigateUI.SetActive(true);
+				nLastMode = nCurMode;
+				nCurMode = nNextMode;
 				break;
 
 			case (int)VIEWMODE.CONVERSE:
 
-				ExploreUI.SetActive(false);
-				ExplorationView.GetComponent<ExplorationView>().ShowProps(false);
-				MenuView.SetActive(false);
+				DeactivateAll();
 
+				ExplorationView.GetComponent<ExplorationView>().ShowScenery(true);
 				ConversationView.SetActive(true);
+				nLastMode = nCurMode;
+				nCurMode = nNextMode;
 				break;
 		}
-		nCurMode = nNextMode;
 	}
+
+	//==============================
+	// 
+	//==============================
+	public void DeactivateAll()
+	{
+		InvestigateView.SetActive(false);
+		InvestigateUI.SetActive(false);
+
+		ExploreUI.SetActive(false);
+		ExplorationView.GetComponent<ExplorationView>().ActivateAll(false);
+		ExplorationView.GetComponent<ExplorationView>().ShowProps(false);
+
+		MenuView.SetActive(false);
+
+		ConversationView.SetActive(false);
+	}
+
 	//==============================
 	// モード切り替え処理
 	//==============================

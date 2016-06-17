@@ -60,6 +60,9 @@
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\MoveLScript.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\MoveRButton.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\PropsScript.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\SceneProp.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\SceneryScript.cs" />
      <Compile Include="Assets\Scripts\GameScripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ModeChange.cs" />
      <Compile Include="Assets\Scripts\LetterBulge.cs" />

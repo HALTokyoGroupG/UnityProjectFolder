@@ -9,8 +9,10 @@ using UnityEngine.UI;
 
 public class TextController : MonoBehaviour
 {
+	//temp
+	public Image charaImage;
+
 	//シナリオ		これをファイルから読み込めるようにする
-	[HideInInspector]
 	public string[] Scenarios;
 
 	//テキストボックスのポインタ
@@ -60,16 +62,16 @@ public class TextController : MonoBehaviour
 
 	void Start()
 	{
-		SetNextLine();
 	}
 
 	void OnEnable()
 	{
-
+		SetNextLine();
 	}
+
 	void OnDisable()
 	{
-
+		Clear();
 	}
 
 	void Update()
@@ -86,11 +88,11 @@ public class TextController : MonoBehaviour
 
 				if (NextFlag)
 				{
-					UiText.text = Scenarios[CurrentLine-1];
+					UiText.text = Scenarios[CurrentLine - 1];
 				}
 				else
 				{
-					UiText.text = Scenarios[CurrentLine-1] + "▼";
+					UiText.text = Scenarios[CurrentLine - 1] + "▼";
 				}
 			}
 
@@ -105,7 +107,7 @@ public class TextController : MonoBehaviour
 		}
 		else
 		{
-			// 完了してないなら文字をすべて表示する
+			//完了してないなら文字をすべて表示する
 			if (Input.GetMouseButtonUp(0)
 				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
 				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
@@ -130,6 +132,7 @@ public class TextController : MonoBehaviour
 		}
 	}
 
+
 	void SetNextLine()
 	{
 		CurrentText = Scenarios[CurrentLine];
@@ -143,11 +146,29 @@ public class TextController : MonoBehaviour
 		LastUpdateCharacter = -1;
 	}
 
-	//temporary use
-	public void SetString(params string[] str)
+
+	//初期化
+	void Clear()
 	{
-		Scenarios = str;
+		CurrentText = string.Empty;
+		CurrentLine = 0;
+
+		TimeElapsed = 0;
+		LastUpdateCharacter = -1;
+
+		NextFlag = false;
+		FlashTime = 0;
+
 	}
 
-
+	public void SetScenario(params string[] Scenario)
+	{
+		Scenarios = Scenario;
+	}
+	
+	//temporary use
+	public void SetCharaImage(Sprite sprite)
+	{
+		charaImage.sprite = sprite;
+	}
 }

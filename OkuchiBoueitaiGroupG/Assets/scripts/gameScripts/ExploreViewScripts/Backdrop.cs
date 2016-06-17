@@ -8,7 +8,7 @@ public class Backdrop : MonoBehaviour
 	public int nLimitLeft = -5;
 
 	//==============================
-	// ゲームの初期化処理
+	// 初期化処理
 	//==============================
 	void Start()
 	{
@@ -16,7 +16,7 @@ public class Backdrop : MonoBehaviour
 	}
 
 	//==============================
-	// ゲームの更新処理
+	// 更新処理
 	//==============================
 	void Update()
 	{
@@ -40,4 +40,6 @@ public class Backdrop : MonoBehaviour
 
 		transform.position = pos;
 	}
+
+
 }

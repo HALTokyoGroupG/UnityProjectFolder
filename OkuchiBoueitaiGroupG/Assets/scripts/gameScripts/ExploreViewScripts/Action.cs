@@ -6,6 +6,7 @@ public class Action : MonoBehaviour
 
 	//temporary use
 	public string str;
+	public Sprite sprite;
 
 	//==============================
 	// ゲームの初期化処理
@@ -36,6 +37,7 @@ public class Action : MonoBehaviour
 					//ここに！をタップした場合の処理を追加する
 					GameManager.instance.GetComponent<ModeChange>().ChangeTo(2);
 					GameManager.instance.GetComponent<GameManager>().StoreString(str);
+					GameManager.instance.GetComponent<GameManager>().StoreSprite(sprite);
 				}
 			}
 		}

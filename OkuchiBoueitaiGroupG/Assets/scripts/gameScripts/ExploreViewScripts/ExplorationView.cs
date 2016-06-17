@@ -32,7 +32,13 @@ public class ExplorationView : MonoBehaviour
 		Props.SetActive(bActive);
 		Player.SetActive(bActive);
 	}
-
+	//==============================
+	// 
+	//==============================
+	public void ShowScenery(bool bActive)
+	{
+		Scenery.SetActive(bActive);
+	}
 	//==============================
 	// 
 	//==============================

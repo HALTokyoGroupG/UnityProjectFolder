@@ -74,9 +74,12 @@ public class GameManager : MonoBehaviour
 	//==============================
 	public void StoreString(params string[] str)
 	{
-		TextController.GetComponent<TextController>().SetString(str);
+		TextController.GetComponent<TextController>().SetScenario(str);
 	}
-
+	public void StoreSprite(Sprite sprite)
+	{
+		TextController.GetComponent<TextController>().SetCharaImage(sprite);
+	}
 
 	////==============================
 	//// オブジェクトをリストに追加処理
