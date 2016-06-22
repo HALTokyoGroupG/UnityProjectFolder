@@ -59,13 +59,20 @@ public class TextController : MonoBehaviour
 
 	void Start()
 	{
+	}
+
+	void OnEnable()
+	{
 		SetNextLine();
+	}
+
+	void OnDisable()
+	{
+		Clear();
 	}
 
 	void Update()
 	{
-		//Vector3 ScreenToWorldPositionMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
 		// 文字の表示が完了してるならクリック時に次の行を表示する
 		if (IsCompleteDisplayText)
 		{
@@ -78,31 +85,23 @@ public class TextController : MonoBehaviour
 
 				if (NextFlag)
 				{
-					UiText.text = Scenarios[CurrentLine];
+					UiText.text = Scenarios[CurrentLine - 1];
 				}
 				else
 				{
-					UiText.text = Scenarios[CurrentLine] + "▼";
+					UiText.text = Scenarios[CurrentLine - 1] + "▼";
 				}
 			}
 
-			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0)
-				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
-				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
-				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
-				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
-            {
+			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0))
+			{
 				SetNextLine();
 			}
 		}
 		else
 		{
-			// 完了してないなら文字をすべて表示する
-			if (Input.GetMouseButtonUp(0)
-				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
-				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
-				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
-				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
+			//完了してないなら文字をすべて表示する
+			if (Input.GetMouseButtonUp(0))
 			{
 				TimeUntilDisplay = 0;
 			}
@@ -123,7 +122,7 @@ public class TextController : MonoBehaviour
 	}
 
 
-	void SetNextLine()
+	public void SetNextLine()
 	{
 		CurrentText = Scenarios[CurrentLine];
 
@@ -134,5 +133,25 @@ public class TextController : MonoBehaviour
 
 		//文字カウントを初期化
 		LastUpdateCharacter = -1;
+	}
+
+
+	//初期化
+	void Clear()
+	{
+		CurrentText = string.Empty;
+		CurrentLine = 0;
+
+		TimeElapsed = 0;
+		LastUpdateCharacter = -1;
+
+		NextFlag = false;
+		FlashTime = 0;
+
+	}
+
+	public void SetScenario(params string[] Scenario)
+	{
+		Scenarios = Scenario;
 	}
 }
