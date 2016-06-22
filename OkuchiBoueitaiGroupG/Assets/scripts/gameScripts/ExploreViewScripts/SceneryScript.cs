@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.UI;
 
 [Serializable] 
 struct SceneryData
@@ -24,6 +25,11 @@ public class SceneryScript : MonoBehaviour {
 
 	//temporary
 	public GameObject[] ForSaving;
+	public string SaveNo = "0000";
+	public string RightTrigNo = "0000";
+	public string LeftTrigNo = "0000";
+	public int RightLimit;
+	public int LeftLimit;
 
 	public GameObject[] SceneryReferenceArray;
 	private SceneryData[] ScenerySet;
@@ -39,8 +45,9 @@ public class SceneryScript : MonoBehaviour {
 	//==============================
 	// セーブロード処理
 	//==============================
-	public void SaveSceneryData(int nID)
+	public void SaveSceneryData()
 	{
+		string nID = SaveNo;
 		EncodeSceneryData();
 
 		BinaryFormatter bf = new BinaryFormatter();
@@ -49,13 +56,17 @@ public class SceneryScript : MonoBehaviour {
 
 		ScenerySaveData data = new ScenerySaveData();
 		data.SetArray(ScenerySet);
+		data.LeftLimit = LeftLimit;
+		data.RightLimit = RightLimit;
+		data.LeftTriggerID = LeftTrigNo;
+		data.RightTriggerID = RightTrigNo;
 
 		bf.Serialize(file, data);
 		file.Close();
 	}
-	public void LoadSceneryData(int nID)
+	public void LoadSceneryData()
 	{
-
+		string nID = SaveNo;
 		if (File.Exists(Application.dataPath + "/sceneryData" + nID + ".dat"))
 		{
 			BinaryFormatter bf = new BinaryFormatter();
@@ -66,16 +77,46 @@ public class SceneryScript : MonoBehaviour {
 			file.Close();
 
 			ScenerySet = data.GetArray();
+			LeftLimit = data.LeftLimit;
+			RightLimit = data.RightLimit;
+			LeftTrigNo = data.LeftTriggerID;
+			RightTrigNo = data.RightTriggerID;
 		}
 
 		DecodeSceneryData();
 	}
 
+	public void LoadSceneryData(string nID)
+	{
+		if (File.Exists(Application.dataPath + "/sceneryData" + nID + ".dat"))
+		{
+			BinaryFormatter bf = new BinaryFormatter();
+
+			FileStream file = File.Open(Application.dataPath + "/sceneryData" + nID + ".dat", FileMode.Open);
+
+			ScenerySaveData data = (ScenerySaveData)bf.Deserialize(file);
+			file.Close();
+
+			ScenerySet = data.GetArray();
+			LeftLimit = data.LeftLimit;
+			RightLimit = data.RightLimit;
+			LeftTrigNo = data.LeftTriggerID;
+			RightTrigNo = data.RightTriggerID;
+		}
+
+		DecodeSceneryData();
+	}
 	//==============================
 	// 
 	//==============================
 	void DecodeSceneryData()
 	{
+		Backdrop BDWork = GetComponentInParent<Backdrop>();
+		BDWork.LeftTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(LeftTrigNo);
+		BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(RightTrigNo);
+		BDWork.nLimitLeft = LeftLimit;
+		BDWork.nLimitRight = RightLimit;
+
 		foreach (SceneryData SD in ScenerySet)
 		{
 			Vector3 pos = new Vector3(SD.posX, SD.posY, SD.posZ);
@@ -113,6 +154,10 @@ public class SceneryScript : MonoBehaviour {
 class ScenerySaveData
 {
 	private SceneryData[] SceneryArray;
+	public string RightTriggerID;
+	public string LeftTriggerID;
+	public int RightLimit;
+	public int LeftLimit;
 
 	public void SetArray(SceneryData[] scenery)
 	{

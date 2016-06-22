@@ -5,6 +5,7 @@ public class Action : MonoBehaviour
 {
 
 	//temporary use
+	[Multiline]
 	public string[] str;
 	public Sprite sprite;
 
