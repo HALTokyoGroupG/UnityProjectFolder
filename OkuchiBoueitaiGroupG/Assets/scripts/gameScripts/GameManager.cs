@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager instance = null;
 	[HideInInspector]
-
+	public ModeChange ModeChanger;
 
 
 	//==============================
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		ModeChanger = GetComponent<ModeChange>();
 	}
 
 	//==============================

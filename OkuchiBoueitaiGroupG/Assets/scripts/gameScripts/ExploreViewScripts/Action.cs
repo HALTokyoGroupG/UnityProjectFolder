@@ -5,7 +5,7 @@ public class Action : MonoBehaviour
 {
 
 	//temporary use
-	public string str;
+	public string[] str;
 	public Sprite sprite;
 
 	//==============================

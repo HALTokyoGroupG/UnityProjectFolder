@@ -96,23 +96,19 @@ public class TextController : MonoBehaviour
 				}
 			}
 
-			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0)
-				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
-				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
-				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
-				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
+			if (CurrentLine < Scenarios.Length && Input.GetMouseButtonUp(0))
 			{
 				SetNextLine();
+			}
+			else if(CurrentLine == Scenarios.Length && Input.GetMouseButtonUp(0))
+			{
+				GameManager.instance.ModeChanger.ChangeTo(5);
 			}
 		}
 		else
 		{
 			//完了してないなら文字をすべて表示する
-			if (Input.GetMouseButtonUp(0)
-				&& !(Menu.transform.position.x - 64 * 0.5f < Input.mousePosition.x
-				&& Menu.transform.position.x + 64 * 0.5f > Input.mousePosition.x
-				&& Menu.transform.position.y - 64 * 0.5f < Input.mousePosition.y
-				&& Menu.transform.position.y + 64 * 0.5f > Input.mousePosition.y))
+			if (Input.GetMouseButtonUp(0))
 			{
 				TimeUntilDisplay = 0;
 			}
