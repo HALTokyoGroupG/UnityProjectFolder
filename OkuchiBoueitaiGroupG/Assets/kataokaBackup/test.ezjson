@@ -5,5 +5,5 @@
 #	オブジェクトの複数行にわたる記述は不可能
 #	
 
-{ "name":"もぶ", "parameters":"mob_Param.ezjsion", "image3D":"sample00.jpg", "image2D":"もぶ" }
-{ "name":"妊婦2","parameters":"mob_Param.ezjsion", "image3D":"sample01.jpg", "image2D":"妊婦2" }
+{ "ID":0, "name":"もぶ", "parameters":"mob_Param.ezjsion", "imageExplore":"ろぼっと", "imageEvent":"ろぼっと.png" }
+{ "ID":1, "name":"妊婦2","parameters":"mob_Param.ezjsion", "imageExplore":"sample01.jpg", "imageEvent":"妊婦2" }

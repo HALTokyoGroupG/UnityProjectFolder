@@ -1,0 +1,24 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\gameScripts\ConversationView\TextController.cs">
+    <Files>
+      <File FileName="Assets\scripts\Test\PropsTest.cs" Line="95" Column="1" />
+      <File FileName="Assets\scripts\Character\CharacterDatabase.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\Character\Character3D.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\gameScripts\GameManager.cs" Line="122" Column="1" />
+      <File FileName="Assets\scripts\Character\Character.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\gameScripts\ExploreViewScripts\Backdrop.cs" Line="73" Column="4" />
+      <File FileName="Assets\scripts\gameScripts\ExploreViewScripts\PlayerScript.cs" Line="37" Column="1" />
+      <File FileName="Assets\scripts\SpriteManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\gameScripts\ConversationView\TextController.cs" Line="44" Column="32" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\shogo\Documents\UnityProjectFolder\OkuchiBoueitaiGroupG\Assets\scripts\Character\CharacterDatabase.cs" line="62" />
+      <Breakpoint file="C:\Users\shogo\Documents\UnityProjectFolder\OkuchiBoueitaiGroupG\Assets\scripts\Character\Character3D.cs" line="10" />
+      <Breakpoint file="C:\Users\shogo\Documents\UnityProjectFolder\OkuchiBoueitaiGroupG\Assets\scripts\Character\Character3D.cs" line="11" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

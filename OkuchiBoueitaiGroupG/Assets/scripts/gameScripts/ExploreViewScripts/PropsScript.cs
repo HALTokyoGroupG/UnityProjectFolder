@@ -18,7 +18,23 @@ struct PropsData
 	//public float rotX;
 	//public float rotY;
 	//public float rotZ;//
-};
+}
+
+[Serializable]
+class PropsSaveData
+{
+	private PropsData[] PropsArray;
+	
+	public void SetArray(PropsData[] scenery)
+	{
+		PropsArray = scenery;
+	}
+	public PropsData[] GetArray()
+	{
+		return PropsArray;
+	}
+	
+}
 
 public class PropsScript : MonoBehaviour {
 
@@ -109,18 +125,3 @@ public class PropsScript : MonoBehaviour {
 	}
 }
 
-[Serializable]
-class PropsSaveData
-{
-	private PropsData[] PropsArray;
-
-	public void SetArray(PropsData[] scenery)
-	{
-		PropsArray = scenery;
-	}
-	public PropsData[] GetArray()
-	{
-		return PropsArray;
-	}
-
-}

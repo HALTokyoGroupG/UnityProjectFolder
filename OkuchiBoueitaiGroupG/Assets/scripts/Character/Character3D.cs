@@ -1,23 +1,33 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Character3D : MonoBehaviour {
-	[SerializeField] string name;
-	CharacterData data;
-	TextMesh text;
+	private CharacterData data;
+	public CharacterData Data{ 
+		set{
+			data = value;
+			var tex = Resources.Load ( data.image3D ) as Texture2D;
+			spriteRenderer.sprite = Sprite.Create( tex, new Rect(0,0,tex.width,tex.height), Vector2.zero );
+		}
+		get{ return data; }
+	}
+
+
+	SpriteRenderer spriteRenderer;
+
 	void Awake( ){
+		spriteRenderer = GetComponent< SpriteRenderer >( );
 		CharacterDatabase.Load ( );
 	}
+
 	// Use this for initialization
 	void Start () {
-		data = CharacterDatabase.Get (name);
-		text = transform.GetChild (0).gameObject.GetComponent< TextMesh >( );
-		text.text = data.image3D.ToString ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if( data != null )
-			transform.position = data.position;
+
 	}
 }

@@ -52,6 +52,7 @@ public class TextController : MonoBehaviour
 	public bool IsCompleteDisplayText
 	{
 		get { return Time.time > TimeElapsed + TimeUntilDisplay; }
+
 	}
 
 	//文字表示速度変更
