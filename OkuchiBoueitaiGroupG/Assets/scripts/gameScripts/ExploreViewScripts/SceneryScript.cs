@@ -4,6 +4,7 @@ using System.Collections;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [Serializable] 
 struct SceneryData
@@ -26,19 +27,36 @@ public class SceneryScript : MonoBehaviour {
 	//temporary
 	public GameObject[] ForSaving;
 	public string SaveNo = "0000";
-	public string RightTrigNo = "0000";
-	public string LeftTrigNo = "0000";
+	public int RightTrigNo = 0;
+	public int LeftTrigNo = 0;
 	public int RightLimit;
 	public int LeftLimit;
 
 	public GameObject[] SceneryReferenceArray;
-	private SceneryData[] ScenerySet;
+	private ScenerySaveData[] ScenerySet;
+	private List<GameObject> CurrentScenery;
 
+	private int nNextNo = 1;
 	//==============================
 	// 初期化処理
 	//==============================
 	void Awake()
 	{
+		CurrentScenery = new List<GameObject>();
+
+		////////// load the sceneries for the current part of the game //////////
+		ScenerySet = new ScenerySaveData[3];
+		ScenerySet[0] = new ScenerySaveData();
+		ScenerySet[1] = new ScenerySaveData();
+		ScenerySet[2] = new ScenerySaveData();
+
+		LoadSceneryData("0001", 1);
+		LoadSceneryData("0002", 2);
+
+		///// create first scenery /////
+		DecodeSceneryData();
+
+
 
 	}
 
@@ -55,7 +73,7 @@ public class SceneryScript : MonoBehaviour {
 		FileStream file = File.Open(Application.dataPath+"/sceneryData" + nID + ".dat", FileMode.OpenOrCreate);
 
 		ScenerySaveData data = new ScenerySaveData();
-		data.SetArray(ScenerySet);
+		data.SceneryArray = ScenerySet[0].SceneryArray;
 		data.LeftLimit = LeftLimit;
 		data.RightLimit = RightLimit;
 		data.LeftTriggerID = LeftTrigNo;
@@ -63,10 +81,34 @@ public class SceneryScript : MonoBehaviour {
 
 		bf.Serialize(file, data);
 		file.Close();
+
+		Debug.Log("data Saved");
 	}
-	public void LoadSceneryData()
+	//public void LoadSceneryData()
+	//{
+	//    string nID = SaveNo;
+	//    if (File.Exists(Application.dataPath + "/sceneryData" + nID + ".dat"))
+	//    {
+	//        BinaryFormatter bf = new BinaryFormatter();
+
+	//        FileStream file = File.Open(Application.dataPath + "/sceneryData" + nID + ".dat", FileMode.Open);
+
+	//        ScenerySaveData data = (ScenerySaveData)bf.Deserialize(file);
+	//        file.Close();
+
+	//        ScenerySet[0].SceneryArray = data.SceneryArray;
+	//        ScenerySet[0].LeftLimit = data.LeftLimit;
+	//        ScenerySet[0].RightLimit = data.RightLimit;
+	//        ScenerySet[0].LeftTriggerID = data.LeftTriggerID;
+	//        ScenerySet[0].RightTriggerID = data.RightTriggerID;
+	//    }
+
+
+	//    //DecodeSceneryData();
+	//}
+
+	public void LoadSceneryData(string nID, int nNo)
 	{
-		string nID = SaveNo;
 		if (File.Exists(Application.dataPath + "/sceneryData" + nID + ".dat"))
 		{
 			BinaryFormatter bf = new BinaryFormatter();
@@ -76,48 +118,66 @@ public class SceneryScript : MonoBehaviour {
 			ScenerySaveData data = (ScenerySaveData)bf.Deserialize(file);
 			file.Close();
 
-			ScenerySet = data.GetArray();
-			LeftLimit = data.LeftLimit;
-			RightLimit = data.RightLimit;
-			LeftTrigNo = data.LeftTriggerID;
-			RightTrigNo = data.RightTriggerID;
+			ScenerySet[nNo].SceneryArray = data.SceneryArray;
+			ScenerySet[nNo].LeftLimit = data.LeftLimit;
+			ScenerySet[nNo].RightLimit = data.RightLimit;
+			ScenerySet[nNo].LeftTriggerID = data.LeftTriggerID;
+			ScenerySet[nNo].RightTriggerID = data.RightTriggerID;
 		}
 
-		DecodeSceneryData();
-	}
-
-	public void LoadSceneryData(string nID)
-	{
-		if (File.Exists(Application.dataPath + "/sceneryData" + nID + ".dat"))
-		{
-			BinaryFormatter bf = new BinaryFormatter();
-
-			FileStream file = File.Open(Application.dataPath + "/sceneryData" + nID + ".dat", FileMode.Open);
-
-			ScenerySaveData data = (ScenerySaveData)bf.Deserialize(file);
-			file.Close();
-
-			ScenerySet = data.GetArray();
-			LeftLimit = data.LeftLimit;
-			RightLimit = data.RightLimit;
-			LeftTrigNo = data.LeftTriggerID;
-			RightTrigNo = data.RightTriggerID;
-		}
-
-		DecodeSceneryData();
+		Debug.Log("data " + nNo + " Loaded");
+		//DecodeSceneryData();
 	}
 	//==============================
 	// 
 	//==============================
-	void DecodeSceneryData()
-	{
-		Backdrop BDWork = GetComponentInParent<Backdrop>();
-		BDWork.LeftTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(LeftTrigNo);
-		BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(RightTrigNo);
-		BDWork.nLimitLeft = LeftLimit;
-		BDWork.nLimitRight = RightLimit;
+	//public void DecodeSceneryData(int nNo)
+	//{
+	//    foreach (GameObject GO in CurrentScenery)
+	//    {
+	//        Destroy(GO);
+	//    }
 
-		foreach (SceneryData SD in ScenerySet)
+	//    //transform.parent.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+
+	//    Backdrop BDWork = GetComponentInParent<Backdrop>();
+	//    BDWork.LeftTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(ScenerySet[nNo].LeftTriggerID);
+	//    BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(ScenerySet[nNo].RightTriggerID);
+	//    BDWork.nLimitLeft = ScenerySet[nNo].LeftLimit;
+	//    BDWork.nLimitRight = ScenerySet[nNo].RightLimit;
+
+	//    foreach (SceneryData SD in ScenerySet[nNo].SceneryArray)
+	//    {
+	//        Vector3 pos = new Vector3(SD.posX, SD.posY, SD.posZ);
+	//        Vector3 scl = new Vector3(SD.sclX, SD.sclY, SD.sclZ);
+	//        Quaternion rot = new Quaternion(SD.rotX, SD.rotY, SD.rotZ, SD.rotW);
+
+	//        GameObject work = Instantiate(SceneryReferenceArray[SD.nId], pos, rot) as GameObject;
+	//        work.transform.localScale = scl;
+	//        work.transform.SetParent(this.transform);
+
+	//        CurrentScenery.Add(work);
+	//    }
+	//}
+	public void DecodeSceneryData()
+	{
+		if (CurrentScenery.Count > 0)
+		{
+			foreach (GameObject GO in CurrentScenery)
+			{
+				Destroy(GO);
+			}
+		}
+
+		transform.parent.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+
+		Backdrop BDWork = GetComponentInParent<Backdrop>();
+		BDWork.LeftTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(ScenerySet[nNextNo].LeftTriggerID);
+		BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(ScenerySet[nNextNo].RightTriggerID);
+		BDWork.nLimitLeft = ScenerySet[nNextNo].LeftLimit;
+		BDWork.nLimitRight = ScenerySet[nNextNo].RightLimit;
+
+		foreach (SceneryData SD in ScenerySet[nNextNo].SceneryArray)
 		{
 			Vector3 pos = new Vector3(SD.posX, SD.posY, SD.posZ);
 			Vector3 scl = new Vector3(SD.sclX, SD.sclY, SD.sclZ);
@@ -126,26 +186,35 @@ public class SceneryScript : MonoBehaviour {
 			GameObject work = Instantiate(SceneryReferenceArray[SD.nId], pos, rot) as GameObject;
 			work.transform.localScale = scl;
 			work.transform.SetParent(this.transform);
+
+			CurrentScenery.Add(work);
 		}
 	}
+	public void SetNextNo(int nNo)
+	{
+		nNextNo = nNo;
+	}
+	//==============================
+	// 
+	//==============================
 	void EncodeSceneryData()
 	{
-		ScenerySet = new SceneryData[ForSaving.Length];
-		for (int i = 0; i < ForSaving.Length; i++ )
+		ScenerySet[0].SceneryArray = new SceneryData[ForSaving.Length];
+		for (int i = 0; i < ForSaving.Length; i++)
 		{
-			ScenerySet[i].nId = ForSaving[i].GetComponent<SceneProp>().GetID();
-			ScenerySet[i].posX = ForSaving[i].transform.position.x;
-			ScenerySet[i].posY = ForSaving[i].transform.position.y;
-			ScenerySet[i].posZ = ForSaving[i].transform.position.z;
-
-			ScenerySet[i].rotW = ForSaving[i].transform.rotation.w;
-			ScenerySet[i].rotX = ForSaving[i].transform.rotation.x;
-			ScenerySet[i].rotY = ForSaving[i].transform.rotation.y;
-			ScenerySet[i].rotZ = ForSaving[i].transform.rotation.z;
-
-			ScenerySet[i].sclX = ForSaving[i].transform.localScale.x;
-			ScenerySet[i].sclY = ForSaving[i].transform.localScale.y;
-			ScenerySet[i].sclZ = ForSaving[i].transform.localScale.z;
+			ScenerySet[0].SceneryArray[i].nId = ForSaving[i].GetComponent<SceneProp>().GetID();
+			ScenerySet[0].SceneryArray[i].posX = ForSaving[i].transform.position.x;
+			ScenerySet[0].SceneryArray[i].posY = ForSaving[i].transform.position.y;
+			ScenerySet[0].SceneryArray[i].posZ = ForSaving[i].transform.position.z;
+			
+			ScenerySet[0].SceneryArray[i].rotW = ForSaving[i].transform.rotation.w;
+			ScenerySet[0].SceneryArray[i].rotX = ForSaving[i].transform.rotation.x;
+			ScenerySet[0].SceneryArray[i].rotY = ForSaving[i].transform.rotation.y;
+			ScenerySet[0].SceneryArray[i].rotZ = ForSaving[i].transform.rotation.z;
+			
+			ScenerySet[0].SceneryArray[i].sclX = ForSaving[i].transform.localScale.x;
+			ScenerySet[0].SceneryArray[i].sclY = ForSaving[i].transform.localScale.y;
+			ScenerySet[0].SceneryArray[i].sclZ = ForSaving[i].transform.localScale.z;
 		}
 	}
 }
@@ -153,19 +222,10 @@ public class SceneryScript : MonoBehaviour {
 [Serializable]
 class ScenerySaveData
 {
-	private SceneryData[] SceneryArray;
-	public string RightTriggerID;
-	public string LeftTriggerID;
+	public SceneryData[] SceneryArray;
+	public int RightTriggerID;
+	public int LeftTriggerID;
 	public int RightLimit;
 	public int LeftLimit;
-
-	public void SetArray(SceneryData[] scenery)
-	{
-		SceneryArray = scenery;
-	}
-	public SceneryData[] GetArray()
-	{
-		return SceneryArray;
-	}
 
 }

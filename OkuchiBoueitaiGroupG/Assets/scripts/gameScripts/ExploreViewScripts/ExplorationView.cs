@@ -12,7 +12,6 @@ public class ExplorationView : MonoBehaviour
 	//==============================
 	void Start()
 	{
-		//GameManager.instance.GetComponent<ModeChange>().RegisterBackdrop(Backdrop);
 	}
 
 	//==============================

@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.5, z: -.0999999046}
+  m_LocalPosition: {x: .5, y: 1.5, z: -.0999999046}
   m_LocalScale: {x: .900000036, y: .900000036, z: 1}
   m_Children: []
   m_Father: {fileID: 411254}
@@ -118,7 +118,7 @@ MonoBehaviour:
   str:
   - "\u3053\u3093\u306B\u3061\u306F\u3002\u3000\u3053\u3053\u306F\u5E83\u5834\u3060\u3088\u3002"
   - "\u3053\u306E\u5148\u306B\u306F\u8857\u304C\u3042\u308B\u304B\u3089\u3001\u305C\u3072\u898B\u3066\u3044\u304F\u3068\u3044\u3044\u3002"
-  sprite: {fileID: 21300000, guid: cd3cd6a5966349b4b9e7eb84be662c92, type: 3}
+  sprite: {fileID: 21300000, guid: af189ffadc8fb8e4ab0cdaab333fd00c, type: 3}
 --- !u!114 &11459248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1280523849
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2d80d5463e48f664eba77d177e1a4359, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fe557fb0ed15364cb1c461e82502750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21273352
 SpriteRenderer:
@@ -212,11 +212,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.32000005
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
@@ -234,6 +234,16 @@ Prefab:
       propertyPath: str.Array.data[1]
       value: "\u3053\u306E\u5148\u306B\u306F\u8857\u304C\u3042\u308B\u304B\u3089\u3001\u305C\u3072\u898B\u3066\u3044\u304F\u3068\u3044\u3044\u3002"
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: af189ffadc8fb8e4ab0cdaab333fd00c,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5fe557fb0ed15364cb1c461e82502750,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104146}

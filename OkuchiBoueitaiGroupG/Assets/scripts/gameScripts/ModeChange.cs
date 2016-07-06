@@ -82,9 +82,9 @@ public class ModeChange : MonoBehaviour
 	//==============================
 	void ChangeMode()
 	{
-		Debug.Log("Next:" + nNextMode);
-		Debug.Log("Cur:" + nCurMode);
-		Debug.Log("Last:" + nLastMode);
+		//Debug.Log("Next:" + nNextMode);
+		//Debug.Log("Cur:" + nCurMode);
+		//Debug.Log("Last:" + nLastMode);
 		switch (nNextMode)
 		{
 			case (int)VIEWMODE.BACK:

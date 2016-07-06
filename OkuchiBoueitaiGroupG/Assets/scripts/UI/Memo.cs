@@ -10,7 +10,7 @@ namespace ui{
 		ArrayList characterNameList;
 
 		[SerializeField] Character2D character;
-		[SerializeField]Text name;
+		[SerializeField]Text charaName;
 
 		// Use this for initialization
 		void Start () {
@@ -19,7 +19,7 @@ namespace ui{
 			foreach( var val in CharacterDatabase.Data )
 				characterNameList.Add ( val.Key );
 			character.Load ( characterNameList[0].ToString () );
-			name.text = characterNameList[0].ToString ();
+			charaName.text = characterNameList[0].ToString();
 		}
 		
 		// Update is called once per frame
@@ -35,7 +35,7 @@ namespace ui{
 			if( page >= characterNameList.Count || page < 0 ) return;
 			currentPage = page;
 			character.Load ( characterNameList[page].ToString () );
-			name.text = characterNameList[page].ToString ();
+			charaName.text = characterNameList[page].ToString();
 		}
 
 		public void TurnPage( ){

@@ -31,7 +31,7 @@ public class SysUpdate : MonoBehaviour {
 
         DontDestroyOnLoad(this);
 
-        Application.targetFrameRate = 30;
+       // Application.targetFrameRate = 30;
 
     }
 

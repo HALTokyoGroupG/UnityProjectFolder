@@ -3,12 +3,13 @@ using System.Collections;
 
 public class AreaMoveTrigger : MonoBehaviour {
 
-	private string NextAreaID;
+	public bool bRightSide;
+	private int NextAreaID = 0;
 
 	//==============================
 	// 初期化処理
 	//==============================
-	void Start()
+	void Awake()
 	{
 
 	}
@@ -24,21 +25,32 @@ public class AreaMoveTrigger : MonoBehaviour {
 	//==============================
 	// 更新処理
 	//==============================
-	void OnTriggerEnter2D(Collider2D collider)
+	void OnTriggerExit2D(Collider2D collider)
 	{
 		if (collider.gameObject.tag == "Player")
 		{
-			Debug.Log("PlayerEnter");
-			GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().LoadSceneryData(NextAreaID);
+			if (NextAreaID != 0)
+			{
+				transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(bRightSide);
+				
+				Debug.Log("PlayerExit-change area");
+
+				GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().SetNextNo(NextAreaID);
+			}
+
 		}
 	}
 
 	//==============================
-	// 更新処理
+	// 
 	//==============================
-	public void SetNextAreaID( string ID )
+	public void SetNextAreaID( int ID )
 	{
 		NextAreaID = ID;
+	}
+	public int GetNextAreaID()
+	{
+		return NextAreaID;
 	}
 
 }

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Character3D : MonoBehaviour {
-	[SerializeField] string name;
+	[SerializeField]
+	string charaName;
 	CharacterData data;
 	TextMesh text;
 	void Awake( ){
@@ -10,7 +11,7 @@ public class Character3D : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		data = CharacterDatabase.Get (name);
+		data = CharacterDatabase.Get(charaName);
 		text = transform.GetChild (0).gameObject.GetComponent< TextMesh >( );
 		text.text = data.image3D.ToString ();
 	}

@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e8fb33dfd9ef84082876909fcc4376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nID: 0
+  nID: 5
 --- !u!212 &21275118
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 510507963
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6298e5f2e9f532740ba36db258e301ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7f3374bb3d42b648967783221b9690a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -84,6 +84,15 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9682e640e91c1fb4ca7be7cd03d18e2d, type: 2}
+    - target: {fileID: 0}
+      propertyPath: nID
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c7f3374bb3d42b648967783221b9690a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 191732}
