@@ -20,7 +20,8 @@ public class Backdrop : MonoBehaviour
 	private bool bFadeIn = false;
 	private Color col = new Color(0f, 0f, 0f, 0f);
 	private LocalMove localmove;
-	private bool bRightSide = true;
+	private Camera mainCamera; 
+
 	[HideInInspector]
 	public enum MVSwitch
 	{
@@ -32,6 +33,8 @@ public class Backdrop : MonoBehaviour
 		MVIN
 	};
 	private MVSwitch moveSwitch = MVSwitch.MVNONE;
+	private Vector3 movePos = new Vector3(0,0,0);
+	private Vector3 camPosStore;
 
 	//==============================
 	// 初期化処理
@@ -39,6 +42,8 @@ public class Backdrop : MonoBehaviour
 	void Awake()
 	{
 		localmove = GameManager.instance.GetComponent<LocalMove>();
+		mainCamera = GameManager.instance.mainCamera;
+		camPosStore = mainCamera.transform.position;
 	}
 
 	//==============================
@@ -49,6 +54,10 @@ public class Backdrop : MonoBehaviour
 		if (bFadeOut)
 		{
 			col.a += FadeRate;
+			if (moveSwitch == MVSwitch.MVIN)
+			{
+				mainCamera.transform.position = Vector3.Lerp(camPosStore, movePos, col.a);
+			}
 
 			if (col.a > 1f)
 			{
@@ -56,16 +65,28 @@ public class Backdrop : MonoBehaviour
 				Vector3 posStore = transform.position;
 				GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
 				Vector3 pos = player.transform.position;
-				if (bRightSide)//consider switch or direct position instead of flag for when including rooms and move flags
+				switch (moveSwitch)
 				{
-					pos.x = LeftTrigger.transform.position.x + 1.0f;
-					posStore.x = -nLimitLeft;
+					case MVSwitch.MVRIGHT:
+						pos.x = LeftTrigger.transform.position.x + 1.0f;
+						posStore.x = -nLimitLeft;
+						break;
+
+					case MVSwitch.MVLEFT:
+						pos.x = RightTrigger.transform.position.x - 1.0f;
+						posStore.x = -nLimitRight;
+						break;
+
+					case MVSwitch.MVUP:
+						pos.x = movePos.x;
+						break;
+
+					case MVSwitch.MVIN:
+						mainCamera.transform.position = camPosStore;
+						break;
+
 				}
-				else
-				{
-					pos.x = RightTrigger.transform.position.x - 1.0f;
-					posStore.x = -nLimitRight;
-				}
+
 				player.transform.position = pos;
 				transform.position = posStore;
 				bFadeIn = true;
@@ -108,18 +129,13 @@ public class Backdrop : MonoBehaviour
 	}
 
 	//==============================
-	// 初期化処理
+	// 
 	//==============================
-	public void FadeOutMove(bool rightside)
-	{
-		bFadeOut = true;
-		bRightSide = rightside;
-	}
-
-	public void FadeOutMove(MVSwitch mvSwitch)
+	public void FadeOutMove(MVSwitch mvSwitch, Vector3 pos)
 	{
 		bFadeOut = true;
 		moveSwitch = mvSwitch;
+		movePos = pos;
 	}
 
 }

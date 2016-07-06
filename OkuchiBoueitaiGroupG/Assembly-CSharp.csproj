@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\GameScripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ConversationView\TextController.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\Action.cs" />
+     <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\ActionMove.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\AreaMoveTrigger.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\Backdrop.cs" />
      <Compile Include="Assets\Scripts\GameScripts\ExploreViewScripts\ExplorationView.cs" />

@@ -31,7 +31,14 @@ public class AreaMoveTrigger : MonoBehaviour {
 		{
 			if (NextAreaID != 0)
 			{
-				transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(bRightSide);
+				if (bRightSide)
+				{
+					transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVRIGHT, Vector3.zero);
+				}
+				else
+				{
+					transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVLEFT, Vector3.zero);
+				}
 				
 				Debug.Log("PlayerExit-change area");
 
