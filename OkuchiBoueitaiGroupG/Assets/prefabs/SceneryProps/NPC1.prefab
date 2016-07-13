@@ -31,6 +31,7 @@ GameObject:
   - 212: {fileID: 21273352}
   - 114: {fileID: 11448078}
   - 65: {fileID: 6592894}
+  - 114: {fileID: 11426670}
   m_Layer: 0
   m_Name: ActionSprite
   m_TagString: Untagged
@@ -104,6 +105,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .939999998, y: .939999998, z: .00999999978}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11426670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658536a170271654191af2f88a148e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bulge: 1
+  fBulgeScale: .0299999993
+  fBulgeRate: .0500000007
+  Flash: 0
+  fFlashRate: 10
 --- !u!114 &11448078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,6 +261,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 5fe557fb0ed15364cb1c461e82502750,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: Bulge
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104146}

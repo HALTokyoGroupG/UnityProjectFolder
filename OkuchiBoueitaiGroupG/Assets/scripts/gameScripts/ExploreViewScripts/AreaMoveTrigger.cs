@@ -5,6 +5,8 @@ public class AreaMoveTrigger : MonoBehaviour {
 
 	public bool bRightSide;
 	private int NextAreaID = 0;
+	private bool bJunction = false;
+	private float posXJunction = 0;
 
 	//==============================
 	// 初期化処理
@@ -25,22 +27,28 @@ public class AreaMoveTrigger : MonoBehaviour {
 	//==============================
 	// 更新処理
 	//==============================
-	void OnTriggerExit2D(Collider2D collider)
+	void OnTriggerEnter2D(Collider2D collider)
 	{
 		if (collider.gameObject.tag == "Player")
 		{
 			if (NextAreaID != 0)
 			{
-				if (bRightSide)
+				if(bJunction)
 				{
-					transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVRIGHT, Vector3.zero);
+					transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVDOWN, new Vector3(posXJunction, 0.0f, 0.0f));
 				}
 				else
 				{
-					transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVLEFT, Vector3.zero);
+					if (bRightSide)
+					{
+						transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVRIGHT, Vector3.zero);
+					}
+					else
+					{
+						transform.parent.GetComponentInChildren<Backdrop>().FadeOutMove(Backdrop.MVSwitch.MVLEFT, Vector3.zero);
+					}
 				}
-				
-				Debug.Log("PlayerExit-change area");
+
 
 				GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().SetNextNo(NextAreaID);
 			}
@@ -60,4 +68,20 @@ public class AreaMoveTrigger : MonoBehaviour {
 		return NextAreaID;
 	}
 
+	//==============================
+	// 
+	//==============================
+	public void SetNextAreaJunction(bool bJunc, float posX)
+	{
+		bJunction = bJunc;
+		posXJunction = posX;
+	}
+	//public bool GetbJunction()
+	//{
+	//    return bJunction;
+	//}
+	//public int GetJunctionPosX()
+	//{
+	//    return posXJunction;
+	//}
 }

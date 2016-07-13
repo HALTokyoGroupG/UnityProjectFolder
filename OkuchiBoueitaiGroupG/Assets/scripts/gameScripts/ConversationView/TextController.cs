@@ -102,7 +102,7 @@ public class TextController : MonoBehaviour
 			}
 			else if(CurrentLine == Scenarios.Length && Input.GetMouseButtonUp(0))
 			{
-				GameManager.instance.ModeChanger.ChangeTo(5);
+				GameManager.instance.ModeChanger.ChangeTo((int)ModeChange.VIEWMODE.BACK);
 			}
 		}
 		else

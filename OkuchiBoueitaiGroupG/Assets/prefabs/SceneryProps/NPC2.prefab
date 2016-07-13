@@ -31,6 +31,7 @@ GameObject:
   - 212: {fileID: 21222268}
   - 114: {fileID: 11417324}
   - 65: {fileID: 6536408}
+  - 114: {fileID: 11481018}
   m_Layer: 0
   m_Name: ActionSprite
   m_TagString: Untagged
@@ -132,6 +133,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nID: 1
+--- !u!114 &11481018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658536a170271654191af2f88a148e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bulge: 1
+  fBulgeScale: .0299999993
+  fBulgeRate: .0500000007
+  Flash: 0
+  fFlashRate: 10
 --- !u!114 &11493082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +264,10 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: nID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Bulge
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

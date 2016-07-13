@@ -13,6 +13,7 @@ public class ModeChange : MonoBehaviour
 		MENU,
 		INVESTIGATE,
 		BACK,
+		CHECK,
 		MAX
 	};
 
@@ -128,6 +129,16 @@ public class ModeChange : MonoBehaviour
 				nLastMode = nCurMode;
 				nCurMode = nNextMode;
 				break;
+
+			case (int)VIEWMODE.CHECK:
+
+				DeactivateAll();
+
+				InvestigateView.SetActive(true);
+				ConversationView.SetActive(true);
+				nLastMode = nCurMode;
+				nCurMode = nNextMode;
+				break;
 		}
 	}
 
@@ -155,6 +166,13 @@ public class ModeChange : MonoBehaviour
 	{
 		nNextMode = nNo;
 		bFadeOut = true;
+	}
+
+	public void FastChange(int nNo)
+	{
+		nNextMode = nNo;
+		ChangeMode();
+		bFadeIn = true;
 	}
 
 }

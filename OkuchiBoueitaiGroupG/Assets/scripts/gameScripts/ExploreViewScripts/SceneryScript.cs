@@ -6,7 +6,7 @@ using System.IO;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-[Serializable] 
+[Serializable] // add a bool for positioning, and Rx, Lx for moving to the middle of an area 
 struct SceneryData
 {
 	public int nId;
@@ -31,6 +31,10 @@ public class SceneryScript : MonoBehaviour {
 	public int LeftTrigNo = 0;
 	public int RightLimit;
 	public int LeftLimit;
+	public bool RightJunction = false;
+	public float RightXpos = 0;
+	public bool LeftJunction = false;
+	public float LeftXpos = 0;
 
 	public GameObject[] SceneryReferenceArray;
 	private ScenerySaveData[] ScenerySet;
@@ -44,19 +48,21 @@ public class SceneryScript : MonoBehaviour {
 	{
 		CurrentScenery = new List<GameObject>();
 
-		////////// load the sceneries for the current part of the game //////////
-		ScenerySet = new ScenerySaveData[3];
+		//////////// load the sceneries for the current part of the game //////////
+		ScenerySet = new ScenerySaveData[4];
 		ScenerySet[0] = new ScenerySaveData();
 		ScenerySet[1] = new ScenerySaveData();
 		ScenerySet[2] = new ScenerySaveData();
+		ScenerySet[3] = new ScenerySaveData();
 
 		LoadSceneryData("0001", 1);
-		LoadSceneryData("0002", 2);
+		LoadSceneryData("00021", 2);
+		LoadSceneryData("0003", 3);
 
-		///// create first scenery /////
+
+
+		/////// create first scenery /////
 		DecodeSceneryData();
-
-
 
 	}
 
@@ -78,6 +84,11 @@ public class SceneryScript : MonoBehaviour {
 		data.RightLimit = RightLimit;
 		data.LeftTriggerID = LeftTrigNo;
 		data.RightTriggerID = RightTrigNo;
+		data.RightJunction = RightJunction;
+		data.RightXpos = RightXpos;
+		data.LeftJunction = LeftJunction;
+		data.LeftXpos = LeftXpos;
+
 
 		bf.Serialize(file, data);
 		file.Close();
@@ -123,6 +134,10 @@ public class SceneryScript : MonoBehaviour {
 			ScenerySet[nNo].RightLimit = data.RightLimit;
 			ScenerySet[nNo].LeftTriggerID = data.LeftTriggerID;
 			ScenerySet[nNo].RightTriggerID = data.RightTriggerID;
+			ScenerySet[nNo].RightJunction = data.RightJunction;
+			ScenerySet[nNo].RightXpos = data.RightXpos;
+			ScenerySet[nNo].LeftJunction = data.LeftJunction;
+			ScenerySet[nNo].LeftXpos = data.LeftXpos;
 		}
 
 		Debug.Log("data " + nNo + " Loaded");
@@ -176,6 +191,8 @@ public class SceneryScript : MonoBehaviour {
 		BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaID(ScenerySet[nNextNo].RightTriggerID);
 		BDWork.nLimitLeft = ScenerySet[nNextNo].LeftLimit;
 		BDWork.nLimitRight = ScenerySet[nNextNo].RightLimit;
+		BDWork.LeftTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaJunction(ScenerySet[nNextNo].LeftJunction, ScenerySet[nNextNo].LeftXpos);
+		BDWork.RightTrigger.GetComponent<AreaMoveTrigger>().SetNextAreaJunction(ScenerySet[nNextNo].RightJunction, ScenerySet[nNextNo].RightXpos);
 
 		foreach (SceneryData SD in ScenerySet[nNextNo].SceneryArray)
 		{
@@ -227,5 +244,8 @@ class ScenerySaveData
 	public int LeftTriggerID;
 	public int RightLimit;
 	public int LeftLimit;
-
+	public bool RightJunction;
+	public float RightXpos;
+	public bool LeftJunction;
+	public float LeftXpos;
 }

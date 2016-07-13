@@ -63,26 +63,38 @@ public class Backdrop : MonoBehaviour
 			{
 				bFadeOut = false;
 				Vector3 posStore = transform.position;
-				GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
+				//GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
 				Vector3 pos = player.transform.position;
 				switch (moveSwitch)
 				{
 					case MVSwitch.MVRIGHT:
+						GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
 						pos.x = LeftTrigger.transform.position.x + 1.0f;
 						posStore.x = -nLimitLeft;
 						break;
 
 					case MVSwitch.MVLEFT:
+						GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
 						pos.x = RightTrigger.transform.position.x - 1.0f;
 						posStore.x = -nLimitRight;
 						break;
 
 					case MVSwitch.MVUP:
-						pos.x = movePos.x;
+						GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
+						pos.x = 0.0f;
+						posStore.x = movePos.x;
+						break;
+
+					case MVSwitch.MVDOWN:
+						GetComponentInParent<ExplorationView>().Scenery.GetComponent<SceneryScript>().DecodeSceneryData();
+						pos.x = 0.0f;
+						localmove.SetLimitFlag(false);
+						posStore.x = movePos.x;
 						break;
 
 					case MVSwitch.MVIN:
 						mainCamera.transform.position = camPosStore;
+						GameManager.instance.GetComponent<ModeChange>().FastChange((int)ModeChange.VIEWMODE.INVESTIGATE);
 						break;
 
 				}
@@ -131,11 +143,12 @@ public class Backdrop : MonoBehaviour
 	//==============================
 	// 
 	//==============================
-	public void FadeOutMove(MVSwitch mvSwitch, Vector3 pos)
+	public void FadeOutMove(MVSwitch mvSwitch, Vector3 pos, float faderate = 0.1f)
 	{
 		bFadeOut = true;
 		moveSwitch = mvSwitch;
 		movePos = pos;
+		FadeRate = faderate;
 	}
 
 }

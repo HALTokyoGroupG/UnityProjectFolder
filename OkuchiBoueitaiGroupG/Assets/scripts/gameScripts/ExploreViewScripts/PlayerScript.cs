@@ -28,9 +28,9 @@ public class PlayerScript : MonoBehaviour
 			RaycastHit2D hit = Physics2D.Raycast(pos, vect, 0.1f, layermask);
 			if (hit.collider != null)
 			{
-				if( hit.collider.gameObject.GetComponent<AreaMoveTrigger>().GetNextAreaID() == 0 )
+				if (hit.collider.gameObject.GetComponent<AreaMoveTrigger>().GetNextAreaID() == 0)
 				{
-					GameManager.instance.GetComponent<LocalMove>().CancelMove();
+					GameManager.instance.GetComponent<LocalMove>().StopMove();
 					vect.x = 0.0f;
 				}
 			}
@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
 
 		}
 
-		if ( Mathf.Abs(pos.x) < 0.05f)
+		if ( Mathf.Abs(pos.x) < 0.04f)
 		{
 			pos.x = 0.0f;
 			localmove.SetLimitFlag(false);

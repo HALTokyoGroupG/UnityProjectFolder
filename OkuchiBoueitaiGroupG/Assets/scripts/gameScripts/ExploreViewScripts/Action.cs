@@ -36,7 +36,7 @@ public class Action : MonoBehaviour
 				if (obj == this.gameObject) //このゲームオブジェクトだけに反応する
 				{
 					//ここに！をタップした場合の処理を追加する
-					GameManager.instance.GetComponent<ModeChange>().ChangeTo(2);
+					GameManager.instance.GetComponent<ModeChange>().ChangeTo((int)ModeChange.VIEWMODE.CONVERSE);
 					GameManager.instance.GetComponent<GameManager>().StoreString(str);
 					GameManager.instance.GetComponent<GameManager>().StoreSprite(sprite);
 				}
